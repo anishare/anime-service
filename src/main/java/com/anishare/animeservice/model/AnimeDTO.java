@@ -1,10 +1,12 @@
 package com.anishare.animeservice.model;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class AnimeDTO {
 
     private UUID id;
+    @NotBlank(message = "Name must not be blank")
     private String name;
     private String malID;
 

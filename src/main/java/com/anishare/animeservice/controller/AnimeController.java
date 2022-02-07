@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.UUID;
 
@@ -34,7 +35,7 @@ public class AnimeController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<AnimeDTO> addAnime(@RequestBody AnimeDTO anime) {
+    public ResponseEntity<AnimeDTO> addAnime(@Valid @RequestBody AnimeDTO anime) {
         return ResponseEntity
                 .created(URI.create(ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString()))
                 .body(animeService.saveAnime(anime));
