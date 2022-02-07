@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.UUID;
 
 @RestController
@@ -32,8 +34,10 @@ public class AnimeController {
     }
 
     @PostMapping("/add")
-    public AnimeDTO addAnime(@RequestBody AnimeDTO anime) {
-        return animeService.saveAnime(anime);
+    public ResponseEntity<AnimeDTO> addAnime(@RequestBody AnimeDTO anime) {
+        return ResponseEntity
+                .created(URI.create(ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString()))
+                .body(animeService.saveAnime(anime));
     }
 
     @DeleteMapping("/{id}/delete")
