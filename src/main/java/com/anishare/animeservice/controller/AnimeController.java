@@ -1,6 +1,6 @@
 package com.anishare.animeservice.controller;
 
-import com.anishare.animeservice.model.Anime;
+import com.anishare.animeservice.model.AnimeDTO;
 import com.anishare.animeservice.service.AnimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,17 +22,17 @@ public class AnimeController {
     }
 
     @GetMapping
-    public Page<Anime> getAll(Pageable pageable) {
+    public Page<AnimeDTO> getAll(Pageable pageable) {
         return animeService.getAllAnime(pageable);
     }
 
     @GetMapping("/{id}")
-    public Anime getAnimeById(@PathVariable UUID id) {
+    public AnimeDTO getAnimeById(@PathVariable UUID id) {
         return animeService.getAnimeById(id);
     }
 
     @PostMapping("/add")
-    public Anime addAnime(@RequestBody Anime anime) {
+    public AnimeDTO addAnime(@RequestBody AnimeDTO anime) {
         return animeService.saveAnime(anime);
     }
 

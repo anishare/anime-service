@@ -1,6 +1,6 @@
 package com.anishare.animeservice;
 
-import com.anishare.animeservice.model.Anime;
+import com.anishare.animeservice.model.AnimeDTO;
 import com.anishare.animeservice.service.AnimeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +18,7 @@ public class AnimeServiceApplication {
 	CommandLineRunner commandLineRunner(AnimeService animeService) {
 		return args -> {
 			for (int i = 0; i < 100; i++) {
-				Anime anime = new Anime();
+				AnimeDTO anime = new AnimeDTO();
 				anime.setName("Anime"+i);
 				animeService.saveAnime(anime);
 			}
