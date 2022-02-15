@@ -4,6 +4,7 @@ import com.anishare.animeservice.model.AnimeDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface AnimeService {
@@ -11,4 +12,6 @@ public interface AnimeService {
     AnimeDTO getAnimeById(UUID uuid);
     Page<AnimeDTO> getAllAnime(Pageable pageable);
     void deleteAnime(UUID uuid);
+    AnimeDTO findIfExists(AnimeDTO animeDTO);
+    List<AnimeDTO> search(AnimeDTO animeDTO);
 }

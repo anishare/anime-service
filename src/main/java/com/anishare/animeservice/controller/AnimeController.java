@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,6 +40,11 @@ public class AnimeController {
         return ResponseEntity
                 .created(URI.create(ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString()))
                 .body(animeService.saveAnime(anime));
+    }
+
+    @GetMapping("/search")
+    public List<AnimeDTO> search(@RequestBody AnimeDTO animeDTO) {
+        return animeService.search(animeDTO);
     }
 
     @DeleteMapping("/{id}/delete")
