@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -61,5 +60,10 @@ public class AnimeServiceImpl implements AnimeService {
     @Override
     public List<AnimeDTO> search(AnimeDTO animeDTO) {
         return animeMapper.animeListToAnimeDTOList(animeRepository.findByNameContainingIgnoreCase(animeDTO.getName()));
+    }
+
+    @Override
+    public List<AnimeDTO> findAllById(List<UUID> list) {
+        return animeMapper.animeListToAnimeDTOList(animeRepository.findAllById(list));
     }
 }

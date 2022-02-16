@@ -14,4 +14,5 @@ public interface AnimeService {
     void deleteAnime(UUID uuid);
     AnimeDTO findIfExists(AnimeDTO animeDTO);
     List<AnimeDTO> search(AnimeDTO animeDTO);
+    List<AnimeDTO> findAllById(List<UUID> list);
 }

@@ -52,4 +52,9 @@ public class AnimeController {
         animeService.deleteAnime(id);
         return ResponseEntity.accepted().body("Entry deleted: " + id);
     }
+
+    @PostMapping("/findAllById")
+    public ResponseEntity<List<AnimeDTO>> findAllById(@RequestBody List<UUID> list) {
+        return ResponseEntity.ok(animeService.findAllById(list));
+    }
 }
